@@ -7,7 +7,7 @@ public abstract class Person {
     public Person(String name) {
         this.name = name;
     }
-
+//getter y setters
     public int getId() {
         return id;
     }
