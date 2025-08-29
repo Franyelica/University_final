@@ -1,36 +1,32 @@
 package model;
 
 public abstract class Teacher extends Person {
-    protected static float baseSalary = 1423500;
-    protected float salary;
+    private double baseSalary = 1423500;
 
-    public Teacher(String name) {
-        super(name);
+    public Teacher(String name, int age) {
+        super(name, age);
     }
 
-    public static float getBaseSalary() {
+    public double getBaseSalary() {
         return baseSalary;
     }
 
-    public static void setBaseSalary(float baseSalary) {
-        Teacher.baseSalary = baseSalary;
+    public void setBaseSalary(double baseSalary) {
+        this.baseSalary = baseSalary;
     }
 
-    public float getSalary() {
-        return salary;
-    }
+    public abstract double calculateSalary();
 
-    public void setSalary(float salary) {
-        this.salary = salary;
-    }
+//    @Override
+//    public String getDetails(){
+//        return "Teacher: " + getName() +
+//                " | ID: " + getId() +
+//                " | Salary: " + calculateSalary();
+//    }
 
     @Override
-    public String toString() {
-        return "Teacher{" +
-                "salary=" + salary +
-                '}';
-    }
-
-    public void calculateSalary(){
+    public String getDetails() {
+        return "Teacher: " + getName() + " | ID: " + getId() +
+                " | Salary: " + calculateSalary();
     }
 }

@@ -6,17 +6,17 @@ import java.util.List;
 public class Classes {
     private String className;
     private String classroom;
-    private Teacher Teacher;
-    private List<Student> students;
-    private static int classCounter = 0;
+    private  Teacher teacher;
+    private  List<Student> students;
 
-    public Classes(String className, String classroom, Teacher teacher, List<Student> students) {
+
+    public Classes(String className, String classroom, Teacher teacher) {
         this.className = className;
         this.classroom = classroom;
-        this.Teacher = teacher;
+        this.teacher = teacher;
         this.students = new ArrayList<>();
-        classCounter++;
     }
+
 
     public String getClassName() {
         return className;
@@ -35,18 +35,22 @@ public class Classes {
     }
 
     public Teacher getTeacher() {
-        return Teacher;
+        return teacher;
     }
 
     public void setTeacher(Teacher teacher) {
-        Teacher = teacher;
+        this.teacher = teacher;
     }
 
     public List<Student> getStudents() {
         return students;
     }
 
-   public void addStudent(Student student){
+    public void setStudents(List<Student> students) {
+        this.students = students;
+    }
+
+    public void addStudent(Student student){
         if(!students.contains(student)){
             students.add(student);
         }
@@ -56,22 +60,11 @@ public class Classes {
         students.remove(student);
    }
 
-    public static int getClassCounter() {
-        return classCounter;
-    }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Class: ").append(className)
-                .append("\nClassroom: ").append(classroom)
-                .append("\nTeacher: ").append(Teacher.getName())
-                .append("\nStudents (").append(students.size()).append("):\n");
-
-        for (Student student : students) {
-            sb.append("  - ").append(student.toString()).append("\n");
-        }
-
-        return sb.toString();
+    public String getDetails(){
+        return "Class : " + className +
+                " | Aula: " + classroom +
+                " | Teacher: " + teacher.getName() +
+                " | Students in this class: " + students.size();
     }
 }

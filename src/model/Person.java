@@ -1,20 +1,24 @@
 package model;
 
 public abstract class Person {
-    protected int id;
-    protected String name;
+    private static int counter = 1;
+    private String name;
+    private final int id;
+    private int age;
 
-    public Person(String name) {
+
+    public Person(String name, int age) {
         this.name = name;
+        this.age = age;
+        this.id = counter++;
     }
 //getter y setters
-    public int getId() {
-        return id;
+
+
+    public static int getCounter() {
+        return counter;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -22,6 +26,18 @@ public abstract class Person {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 
     @Override
@@ -32,5 +48,5 @@ public abstract class Person {
                 '}';
     }
 
-    protected abstract int generateId();
+    public abstract String getDetails();
 }

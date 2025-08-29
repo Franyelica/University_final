@@ -1,10 +1,10 @@
 package model;
 
 public class PartTimeTeacher extends Teacher{
-    int hoursWorked;
+    private int hoursWorked;
 
-    public PartTimeTeacher(String name, int hoursWorked) {
-        super(name);
+    public PartTimeTeacher(String name, int age, int hoursWorked) {
+        super(name, age);
         this.hoursWorked = hoursWorked;
         calculateSalary();
     }
@@ -17,7 +17,14 @@ public class PartTimeTeacher extends Teacher{
         this.hoursWorked = hoursWorked;
     }
 
-    public void calculateSalary(){
-        this.salary = baseSalary / hoursWorked;
+    @Override
+    public double calculateSalary(){
+
+        return getBaseSalary() / hoursWorked;
+    }
+
+    @Override
+    public String getDetails(){
+        return super.getDetails() + " | Hours worked: " + hoursWorked;
     }
 }

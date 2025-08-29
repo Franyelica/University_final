@@ -1,10 +1,10 @@
 package model;
 
-public class FullTimeTeacher extends Teacher {
-    int yearsWorked;
+public  class FullTimeTeacher extends Teacher {
+    private int yearsWorked;
 
-    public FullTimeTeacher(String name, int yearsWorked) {
-        super(name);
+    public FullTimeTeacher(String name, int age, int yearsWorked) {
+        super(name,age);
         this.yearsWorked = yearsWorked;
         calculateSalary();
     }
@@ -17,7 +17,12 @@ public class FullTimeTeacher extends Teacher {
         this.yearsWorked = yearsWorked;
     }
 
-    public void calculateSalary(){
-        this.salary = (float) (baseSalary * (1.1+(yearsWorked * 0.01)));
+    public double calculateSalary(){
+        return  getBaseSalary() * (1.1+(yearsWorked * 0.01));
+    }
+
+    @Override
+    public String getDetails(){
+        return super.getDetails()+ " | Años de experiencia: " + yearsWorked;
     }
 }
